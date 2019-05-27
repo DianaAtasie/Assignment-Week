@@ -6,7 +6,6 @@ shinyUI(fluidPage(
 
   sidebarLayout(
     sidebarPanel(
-      helpText("This application is a predictor for the price of a diamond based on its characteristics."),
       h3(helpText("Select:")),
       numericInput("age", label = h4("Age"), step = 1, value = 20),
       numericInput("year", label = h4("Year"), step = 1, value = 1996),
