@@ -14,10 +14,9 @@ shinyServer(function(input, output) {
                                               employed=input$employed,
                                               citizen=input$citizen,
                                               checks=input$checks))
-
-    plot(Arrests$released)
-    points(predictor,col="red",cex=20)
-
+    x=head(Arrests,20)
+   plot(rownames(x),x$released)
+   points(round(predictor,0),col="red",cex=1)
   })
   output$result <- renderText({
     fit <- lm( released~., Arrests)
@@ -27,8 +26,10 @@ shinyServer(function(input, output) {
                                                    age = input$age,
                                                    employed=input$employed,
                                                    citizen=input$citizen,
-                                                   checks=input$checks))
-    response <- round(predictor, digits = 1)
+                                                 checks=input$checks))
+    if(round(predictor,0)==2) 
+    response="Yes"
+    else response="No"
     response
   })
 
