@@ -15,7 +15,7 @@ shinyServer(function(input, output) {
                                               citizen=input$citizen,
                                               checks=input$checks))
     x=head(Arrests,20)
-   plot(rownames(x),x$released)
+   plot(rownames(x),x$released, xlab="respondent id", ylab="released")
    points(round(predictor,0),col="red",cex=1)
   })
   output$result <- renderText({
